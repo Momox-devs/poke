@@ -40,14 +40,16 @@ def tercerarepuesta():
     for elem in filtro:
         response3  = requests.get(elem['pokemon']['url'])
         response3  = response3.json()
-        response3  = response3.get('weight', {})
-        if peso[0] <= response3:
-             peso[0] = response3
-        if peso[1] >= response3 or 0 == peso[1]:
-             peso[1] = response3
+        responsew  = response3.get('weight', {})
+        reponseid  = response3.get('id', {})
+        if reponseid <= 151:
+            if peso[0] <= responsew:
+                peso[0] = responsew
+            if peso[1] >= responsew or 0 == peso[1]:
+                peso[1] = responsew
 
     print peso
-
+    
 
 primeraRespuesta()
 segundarepuesta()
